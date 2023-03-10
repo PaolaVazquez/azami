@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,500&display=swap');
+.container-navbar{
+    width: 100%;
+}
+.logo-header{
+    width: 200px;
+}
+.container {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    line-height: 80px;
+    z-index: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+.links .link {
+    display: inline-block;
+}
+.links .link  {
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+    margin: 0 25px;
+    letter-spacing: 3px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.links .link a:hover {
+    color: #937EBF;
+}
+
+.prom-franja{
+    background-color: #937EBF;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    height: 80px;
+}
+
+.dropConten{
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+    text-decoration: none;
+    top: 15%;
+}
+
+.subcategory{
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 3px;
+    transition: .3s;
+    cursor: pointer;
+    display: block;
+    background: transparent;
+    height: 40px;
+    margin-bottom: 0.4rem;
+}
+.dropmenu:hover .dropConten{
+    display: block;
+}
+
