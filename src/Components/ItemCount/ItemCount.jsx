@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddIcon from '@mui/icons-material/Add';
 import "./ItemCount.css"
 import RemoveIcon from '@mui/icons-material/Remove';
 
 export const ItemCount = ({stock, initial = 1, onAdd}) => {
-    const [contador, setContador] = useState(initial) 
+    const [contador, setContador] = useState(initial) // - - -> []
+    //console.log ( counterState [0])
+    //console.log ( counterState [1])
+
+    // useEffect(()=>{
+    //     setContador(initial)
+    // }, [initial])
 
     const sumar = ()=>{
         if(contador < stock){
@@ -12,7 +18,7 @@ export const ItemCount = ({stock, initial = 1, onAdd}) => {
         }
     }
     const restar = ()=>{
-        if(contador > 0){
+        if(contador > 1){
             setContador(contador -1)
         }
     }

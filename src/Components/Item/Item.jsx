@@ -29,8 +29,8 @@ export const Item = ( {element} ) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to= {`/itemDetail/${element.id}`}>
-                    <Button size="small" variant='contained' className='btn-detalle'>Ver detalle</Button>
+                <Link to= {`/itemDetail/${element.id}`} underline="none">
+                    <Button size="small" variant='contained' className='btn-detalle' >Ver detalle</Button>
                 </Link>
             </CardActions>
         </Card>

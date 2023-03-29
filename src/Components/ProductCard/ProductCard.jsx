@@ -1,5 +1,7 @@
 import "./ProductCard.css"
 export const ProductCard = ({title, price =0, isRed}) => {
+    //console.log(props)
+    //let {title, price} = props //desestructuración de objetos
     const saludar =()=>{
       console.log("hola")
     }

@@ -1,32 +1,78 @@
 import './ItemListContainer.css'
 import { useState, useEffect } from 'react'
-import { products } from '../../productMok'
 import { ItemList } from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-
+import HashLoader from "react-spinners/HashLoader";
+import { db } from "../../firebaseConfig"
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 export const ItemListContainer = () => {
-  const {id} = useParams()
+  const {categoryName} = useParams()
 
   const [product, setProduct] = useState([])
-  const productosFiltrados = products.filter((elemento)=>(elemento.id === Number(id)))
-  console.log(productosFiltrados)
+
+  //console.log(productosFiltrados)
 
   useEffect(()=>{
-    const productlist = new Promise ((resolve, reject)=>{
-      resolve(id ? productosFiltrados : products)
+
+
+    // const itemsCollection = collection(db, "products" )
+    // getDocs(itemsCollection)
+    // .then(res => {
+    //   let products = res.docs.map((element) => {
+    //     return{
+    //       ...element.data(), 
+    //       id: element.id
+    //     }
+    //   })
+    //   setProduct(products
+    //     )
+    // })
+    const itemsCollection = collection(db, "products")
+    let consulta = undefined;
+    if(categoryName){
+      const q = query(itemsCollection, where("category", "==", categoryName))
+      consulta = getDocs(q)
+    }else{
+      consulta = getDocs(itemsCollection);
+    }
+    
+    consulta.then(res =>{
+      let products = res.docs.map((element) =>{
+        return {
+          ...element.data(), 
+          id: element.id
+        }
+      })
+      setProduct(products)
     })
-    productlist
-    .then((res)=> {setProduct(res)})
-    .catch((error)=>{console.log(error)})
-  }, [id])
+  }, [categoryName])
   
-  console.log(product)
+  //IF CON  RETURN TEMPRANO
+  // if(product.length === 0){
+  //   return <h1>Cargando..............</h1>
+  // }
+
+
+  //console.log(product)
   
 
   return (
     <div>
-     <ItemList product={product} />
+      {/* {
+        product.length > 0 && <ItemList product={product} />
+      } */}
+     
+      {
+        product.length > 0 ? (<ItemList product={product} />) : (<HashLoader
+        color={"red"}
+        //loading={loading}
+        //cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />)
+      }
 
     </div>
   )
