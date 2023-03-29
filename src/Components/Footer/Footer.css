@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,500&display=swap');
+.bg-footer{
+    background-color: #937EBF;
+    color: #ffff;
+    font-family: 'Montserrat', sans-serif;
+}
+.footer{
+    margin: auto;
+    width: 100%;
+}
+.atencion-legal .atencion-link .legal-link{
+    color: #ffff;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 25px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+.redes-sociales .icon-sm{
+    color: #ffff;
+}
